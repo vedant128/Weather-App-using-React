@@ -1,0 +1,141 @@
+body {
+  background-color: rgb(190, 163, 227);
+}
+
+.weatherdiv {
+  color: aliceblue;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+  height: 70%;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px 0px;
+  overflow: hidden; /* Ensure the pseudo-element doesn't overflow */
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Initial box shadow */
+  animation: rgbBoxShadow 4s linear infinite; /* Apply the animation */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+@keyframes rgbBoxShadow {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* Red */
+  }
+  33% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Green */
+  }
+  66% {
+    box-shadow: 0 0 30px rgba(0, 0, 255, 0.8); /* Blue */
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* Back to Red */
+  }
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-box:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-box input {
+  border-radius: 20px;
+  height: 20px;
+  flex-basis: 60%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #7700ff;
+  box-shadow: 0 0 8px rgba(0, 51, 102, 0.2);
+}
+
+.search-box button {
+  flex-basis: 40%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #8a59c3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-box button:hover {
+  background-color: #ae00ff;
+  transform: scale(1.05);
+}
+
+.search-box button:active {
+  transform: scale(0.95);
+}
+
+
+.weather-card {
+  color: black;
+  margin-top: 50px;
+  background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+  height: 250px;
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.weather-card label {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.weather-card .country-code {
+  background-color: #ffeb3b;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.weather-card .temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #a751c9;
+}
+
+.weather-card .weather-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.weather-card .weather-condition {
+  font-size: 1.1rem;
+  color: #555;
+}
