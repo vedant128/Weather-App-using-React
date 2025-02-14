@@ -5,9 +5,10 @@ export default function
 
   let [city,setcityname]=useState('');
   let [wdetails,setwdetails]=useState();
-
+  let [isloading,setisloading]=useState(false);
   let getdata=(event)=>{
-    const API_KEY = "  #paste here  ";  //your-api-key-here 
+    setisloading(true)
+    const API_KEY = "72ad1d06a7d9d447ba1a9f83d1c81f06";  //your-api-key-here 
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
     .then((res) => res.json())
     .then((finalres) => {
@@ -15,6 +16,8 @@ export default function
       setwdetails(finalres)
     })
     setcityname('');
+    setisloading(false)
+    
       event.preventDefault();
       
   }
@@ -33,21 +36,25 @@ export default function
       </div>
 </form>
       <div className="weather-card">
+
+      <img src='https://cdn.dribbble.com/userupload/25690596/file/original-a628cc108a176d65c7e02252f04ec4a7.gif' className={`${isloading?'image':'hidee'}`} />
   
-  {wdetails!=undefined&&wdetails.cod!="404"
+  {wdetails!=undefined&&wdetails.cod!="404"&&wdetails.city.name!=' '
   ?
   <>
+
         <label>
           {wdetails.city.name} <span className="country-code">{wdetails.city.country}</span>
         </label>
         <div className="temperature">{wdetails.list[0].main.temp}</div>
-        <div>
-          <span className="weather-icon">🌫️</span>
+        <div className='weather_icon'>
+          <span className="weather-icon"><img src={`http://openweathermap.org/img/w/${wdetails.list[0].weather[0].icon}.png`}></img></span>
           <label className="weather-condition">{wdetails.list[0].weather[0].description}</label>
         </div>
    </>
     :
     "No Data Found"
+    
   }
 </div>
     </div>

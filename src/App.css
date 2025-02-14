@@ -4,7 +4,7 @@ body {
 
 .weatherdiv {
   color: aliceblue;
-  background-color: rgb(0, 0, 0);
+  /* background-color: rgb(0, 0, 0); */
   z-index: 1;
   height: 70%;
   width: 40%;
@@ -12,29 +12,68 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 40px 0px;
-  overflow: hidden; /* Ensure the pseudo-element doesn't overflow */
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Initial box shadow */
-  animation: rgbBoxShadow 4s linear infinite; /* Apply the animation */
+  border-radius: 40px 0px 40px 0px;
+  /* box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);  */
+  animation: rgbBoxShadow 4s linear infinite; 
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 20px;
+  user-select: none;
+}
+
+.weatherdiv:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(8px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: rgbBoxShadow 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  /* border-radius: 0px; */
+  border-radius: 40px 0px 40px 0px;
 }
 
 @keyframes rgbBoxShadow {
   0% {
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* Red */
+    background-position: 0 0;
   }
-  33% {
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Green */
-  }
-  66% {
-    box-shadow: 0 0 30px rgba(0, 0, 255, 0.8); /* Blue */
+  50% {
+    background-position: 400% 0;
   }
   100% {
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* Back to Red */
+    background-position: 0 0;
   }
+}
+
+.weatherdiv:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  left: 0;
+  top: 0;
+  /* border-radius: 0px; */
+  border-radius: 40px 0px 40px 0px;
 }
 
 .search-box {
@@ -92,9 +131,10 @@ body {
 
 
 .weather-card {
+  background: white;
   color: black;
   margin-top: 50px;
-  background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+  /* background: linear-gradient(135deg, #f9f9f9, #e0e0e0); */
   height: 250px;
   width: 300px;
   border-radius: 20px;
@@ -138,4 +178,18 @@ body {
 .weather-card .weather-condition {
   font-size: 1.1rem;
   color: #555;
+}
+
+
+.image{
+  width: 200px;
+  height: auto;
+  position: absolute; 
+}
+
+.hidee{
+  width: 200px;
+  height: auto;
+  position: absolute; 
+ visibility: hidden; 
 }
