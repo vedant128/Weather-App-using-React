@@ -8,7 +8,7 @@ export default function
   let [isloading,setisloading]=useState(false);
   let getdata=(event)=>{
     setisloading(true)
-    const API_KEY = "72ad1d06a7d9d447ba1a9f83d1c81f06";  //your-api-key-here 
+    const API_KEY = "#########";  //your-api-key-here 
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
     .then((res) => res.json())
     .then((finalres) => {
