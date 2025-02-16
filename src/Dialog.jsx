@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function 
 () {
@@ -6,24 +6,29 @@ export default function
   let [city,setcityname]=useState('');
   let [wdetails,setwdetails]=useState();
   let [isloading,setisloading]=useState(false);
+
   let getdata=(event)=>{
+    if (!city.trim()) return;
     setisloading(true)
-    const API_KEY = "#########";  //your-api-key-here 
+
+    const API_KEY = process.env.REACT_APP_API_KEY;  //your-api-key-here 
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
     .then((res) => res.json())
     .then((finalres) => {
       console.log(finalres)
       setwdetails(finalres)
+      setisloading(false)
     })
     setcityname('');
-    setisloading(false)
     
       event.preventDefault();
       
   }
 
+
   return (
     <div className='weatherdiv'>
+
 <h1>Simple Weather App</h1>
 <form onSubmit={getdata}>
       <div className="search-box">
